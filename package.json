@@ -1,0 +1,45 @@
+{
+  "name": "html-validator-cli",
+  "version": "1.0.0",
+  "description": "CLI for validating html using validator.w3.org/nu",
+  "license": "MIT",
+  "author": {
+    "name": "Geir Gåsodden",
+    "email": "geir.gasodden@pythonia.no",
+    "url": "https://github.com/zrrrzzt"
+  },
+  "main": "index.js",
+  "bin": {
+    "html-validator": "index.js"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "setup": "npm install && node setup.js",
+    "test": "standard && tap --reporter=spec test/*.js",
+    "coverage": "tap test/*.js --coverage",
+    "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls"
+  },
+  "keywords": [
+    "html-validator",
+    "validation",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/zrrrzzt/html-validator-cli.git"
+  },
+  "bugs": {
+    "url": "http://github.com/zrrrzzt/html-validator-cli/issues"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "html-validator": "^0.0.8"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.4",
+    "standard": "^5.3.1",
+    "tap": "^1.4.1"
+  }
+}

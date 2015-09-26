@@ -1,0 +1,13 @@
+[
+  "Usage: ",
+  "",
+  "$ html-validator <url>",
+  "",
+  "or",
+  "$ html-validator --file=<file>",
+  "",
+  "Optional, specify format of returned data",
+  "Valid options: json, html, xhtml, xml, gnu and text (default)",
+  "",
+  "$ html-validator <url> --format=<format>"
+]
