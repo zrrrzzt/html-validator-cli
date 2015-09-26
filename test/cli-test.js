@@ -87,3 +87,13 @@ tap.test('You can supply url by flag', function testError (test) {
     test.end()
   })
 })
+
+tap.test('You can use another validator', function testError (test) {
+  exec('./index.js', ['https://www.github.com', '--validator=http://html5.validator.nu'], function versionWithV (error, stdout, stderr) {
+    if (error) {
+      throw error
+    }
+    test.ok(stdout.toString().trim(), 'Data OK')
+    test.end()
+  })
+})

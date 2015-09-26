@@ -31,6 +31,10 @@ if (argv.url) {
   opts.url = argv.url
 }
 
+if (argv.validator) {
+  opts.validator = argv.validator
+}
+
 if (argv.file) {
   opts.data = fs.readFileSync(argv.file)
 }

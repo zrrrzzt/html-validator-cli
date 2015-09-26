@@ -12,12 +12,6 @@ $ npm install html-validator-cli -g
 
 ## Usage
 
-Pass in <url> or --file and optional --format or --validator.
-
-### Examples
-
-With url
-
 ```sh
 $ html-validator <url>
 ```
