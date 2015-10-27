@@ -39,9 +39,10 @@ if (argv.file) {
   opts.data = fs.readFileSync(argv.file)
 }
 
-validator(opts, function (err, data) {
-  if (err) {
-    throw err
+validator(opts, function (error, data) {
+  if (error) {
+    console.error(error)
+    process.exit(1)
   } else {
     console.log(opts.format === 'json' ? JSON.stringify(data) : data)
   }
