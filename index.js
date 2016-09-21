@@ -8,6 +8,7 @@ var pkg = require('./package.json')
 var query = process.argv[2]
 var argv = require('minimist')((process.argv.slice(2)))
 var opts = {format: 'text'}
+const isError = item => item.type === 'error'
 
 if (!query || process.argv.indexOf('-h') !== -1 || process.argv.indexOf('--help') !== -1) {
   console.log(getHelpText())
@@ -48,8 +49,9 @@ validator(opts, function (error, data) {
     var validationFailed = false
 
     if (opts.format === 'json') {
-      msg = JSON.stringify(data)
-      if (data.messages.length) {
+      const errors = data.messages.filter(isError)
+      msg = JSON.stringify(data, null, 2)
+      if (errors.length > 0) {
         validationFailed = true
       }
     } else {
@@ -58,10 +60,9 @@ validator(opts, function (error, data) {
         validationFailed = true
       }
     }
-
-    console.log(msg)
     if (validationFailed) {
-      process.exit(2)
+      console.error('Page not valid')
     }
+    console.log(msg)
   }
 })
