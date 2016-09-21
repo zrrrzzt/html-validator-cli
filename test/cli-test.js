@@ -51,7 +51,7 @@ tap.test('It returns error on validation failure', function testError (test) {
     if (error) {
       throw error
     }
-    test.equal(stderr.toString().trim(), 'Page not valid', 'Expected message to stderr')
+    test.equal(stderr.toString().trim(), 'Page is not valid', 'Expected message to stderr')
     test.end()
   })
 })
