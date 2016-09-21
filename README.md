@@ -4,6 +4,8 @@
 # html-validator-cli
 CLI for validating html using [validator.w3.org/nu](http://validator.w3.org/nu/)
 
+Sends ```Page is valid```to ```STDOUT``` ìf page is valid and ```Page is not valid``` to ```STDERR``` if it's not
+
 ## Installation
 
 ```sh

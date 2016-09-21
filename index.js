@@ -61,7 +61,9 @@ validator(opts, function (error, data) {
       }
     }
     if (validationFailed) {
-      console.error('Page not valid')
+      console.error('Page is not valid')
+    } else {
+      console.log('Page is valid')
     }
     console.log(msg)
   }
