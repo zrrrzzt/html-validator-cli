@@ -44,6 +44,24 @@ validator(opts, function (error, data) {
     console.error(error)
     process.exit(1)
   } else {
-    console.log(opts.format === 'json' ? JSON.stringify(data) : data)
+    var msg
+    var validationFailed = false
+
+    if (opts.format === 'json') {
+      msg = JSON.stringify(data)
+      if (data.messages.length) {
+        validationFailed = true
+      }
+    } else {
+      msg = data
+      if (data.includes('There were errors')) {
+        validationFailed = true
+      }
+    }
+
+    console.log(msg)
+    if (validationFailed) {
+      process.exit(2)
+    }
   }
 })

@@ -48,6 +48,13 @@ tap.test('It returns error on error', function testError (test) {
   })
 })
 
+tap.test('It returns error on validation failure', function testError (test) {
+  exec('./index.js', ['--file=test/data/invalid.html'], function versionWithV (error, stdout, stderr) {
+    test.ok(error, 'Error OK')
+    test.end()
+  })
+})
+
 tap.test('It returns data if url supplied', function testError (test) {
   exec('./index.js', ['https://www.github.com'], function versionWithV (error, stdout, stderr) {
     if (error) {
@@ -59,20 +66,14 @@ tap.test('It returns data if url supplied', function testError (test) {
 })
 
 tap.test('It returns data if file supplied', function testError (test) {
-  exec('./index.js', ['--file=test/data/invalid.html'], function versionWithV (error, stdout, stderr) {
-    if (error) {
-      throw error
-    }
+  exec('./index.js', ['--file=test/data/invalid.html'], function versionWithV (_, stdout, stderr) {
     test.ok(stdout.toString().trim(), 'Data OK')
     test.end()
   })
 })
 
-tap.test('It returns data on supplied supplied format', function testError (test) {
-  exec('./index.js', ['--file=test/data/invalid.html', '--format=json'], function versionWithV (error, stdout, stderr) {
-    if (error) {
-      throw error
-    }
+tap.test('It returns data in supplied format', function testError (test) {
+  exec('./index.js', ['--file=test/data/invalid.html', '--format=json'], function versionWithV (_, stdout, stderr) {
     test.equal(JSON.parse(stdout.toString().trim()).messages.length, 3)
     test.end()
   })
