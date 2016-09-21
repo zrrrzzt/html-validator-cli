@@ -13,7 +13,7 @@
     "html-validator": "index.js"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.5.0"
   },
   "scripts": {
     "setup": "npm install && node setup.js",
