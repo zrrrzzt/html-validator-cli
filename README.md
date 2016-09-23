@@ -4,7 +4,8 @@
 # html-validator-cli
 CLI for validating html using [validator.w3.org/nu](http://validator.w3.org/nu/)
 
-Sends ```Page is valid```to ```STDOUT``` ìf page is valid and ```Page is not valid``` to ```STDERR``` if it's not
+Sends ```Page is valid```to ```STDOUT``` and exits with code 1 ìf page is valid.
+Sends ```Page is not valid``` to ```STDOUT``` and exits with code 1 if page is not valid.
 
 ## Installation
 
@@ -38,6 +39,12 @@ It needs to expose the same REST interface.
 
 ```sh
 $ html-validator <url> --validator='http://html5.validator.nu'
+```
+
+To get full result from validator use --verbose
+
+```sh
+$ html-validator <url> --verbose
 ```
 
 ## Related

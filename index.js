@@ -43,7 +43,7 @@ if (argv.file) {
 validator(opts, function (error, data) {
   if (error) {
     console.error(error)
-    process.exit(1)
+    process.exitCode = 1
   } else {
     var msg
     var validationFailed = false
@@ -61,10 +61,17 @@ validator(opts, function (error, data) {
       }
     }
     if (validationFailed) {
-      console.error('Page is not valid')
+      if (!argv.verbose) {
+        console.log('Page is not valid')
+      }
+      process.exitCode = 1
     } else {
-      console.log('Page is valid')
+      if (!argv.verbose) {
+        console.log('Page is valid')
+      }
     }
-    console.log(msg)
+    if (argv.verbose) {
+      console.log(msg)
+    }
   }
 })
