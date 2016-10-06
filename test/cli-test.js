@@ -1,9 +1,10 @@
 'use strict'
 
-var exec = require('child_process').execFile
-var tap = require('tap')
-var getHelpText = require('../lib/getHelpText')
-var pkgVersion = require('../package.json').version
+const tap = require('tap')
+const fs = require('fs')
+const exec = require('child_process').execFile
+const getHelpText = require('../lib/getHelpText')
+const pkgVersion = require('../package.json').version
 
 tap.test('It returns helptext with -h flag', function helpTextWithH (test) {
   exec('./index.js', ['-h'], function helpTextWithH (error, stdout, stderr) {
@@ -66,6 +67,18 @@ tap.test('It returns correct message on validation success', function testSucces
 
 tap.test('It returns data if file supplied', function testError (test) {
   exec('./index.js', ['--file=test/data/valid.html'], function versionWithV (error, stdout, stderr) {
+    if (error) {
+      throw error
+    }
+    test.ok(stdout.toString().trim(), 'Data OK')
+    test.end()
+  })
+})
+
+tap.test('It returns data if data supplied', function testError (test) {
+  const data = fs.readFileSync('test/data/valid.html', 'utf-8')
+  const cmd = `--data=${data}`
+  exec('./index.js', [cmd], (error, stdout, stderr) => {
     if (error) {
       throw error
     }

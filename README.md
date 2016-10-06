@@ -23,7 +23,13 @@ $ html-validator <url>
 With file
 
 ```sh
-$ html-validator --file=path-to-file
+$ html-validator --file=<path-to-file>
+```
+
+With data
+
+```sh
+$ html-validator --data=data
 ```
 
 Optional pass in format for returned data.

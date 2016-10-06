@@ -40,6 +40,10 @@ if (argv.file) {
   opts.data = fs.readFileSync(argv.file)
 }
 
+if (argv.data) {
+  opts.data = argv.data
+}
+
 validator(opts, function (error, data) {
   if (error) {
     console.error(error)
