@@ -1,6 +1,6 @@
 {
   "name": "html-validator-cli",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "CLI for validating html using validator.w3.org/nu",
   "license": "MIT",
   "author": {
@@ -13,7 +13,7 @@
     "html-validator": "index.js"
   },
   "engines": {
-    "node": ">=4.6.0"
+    "node": ">=4.6.1"
   },
   "scripts": {
     "setup": "npm install && node setup.js",
