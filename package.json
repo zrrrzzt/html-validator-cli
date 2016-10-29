@@ -1,6 +1,6 @@
 {
   "name": "html-validator-cli",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "CLI for validating html using validator.w3.org/nu",
   "license": "MIT",
   "author": {
