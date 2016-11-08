@@ -34,13 +34,13 @@
     "url": "http://github.com/zrrrzzt/html-validator-cli/issues"
   },
   "dependencies": {
-    "html-validator": "2.0.3",
+    "html-validator": "2.0.4",
     "minimist": "1.2.0"
   },
   "devDependencies": {
     "coveralls": "2.11.14",
-    "nsp": "2.6.1",
-    "standard": "8.4.0",
+    "nsp": "2.6.2",
+    "standard": "8.5.0",
     "tap": "8.0.0"
   }
 }
