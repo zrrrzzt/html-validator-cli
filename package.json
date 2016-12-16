@@ -34,7 +34,7 @@
     "url": "http://github.com/zrrrzzt/html-validator-cli/issues"
   },
   "dependencies": {
-    "html-validator": "2.0.4",
+    "html-validator": "2.1.0",
     "minimist": "1.2.0"
   },
   "devDependencies": {
