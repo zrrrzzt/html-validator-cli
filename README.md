@@ -48,6 +48,12 @@ It needs to expose the same REST interface.
 $ html-validator <url> --validator='http://html5.validator.nu'
 ```
 
+Optional pass in strings to ignore
+
+```bash
+html-validator <url> --ignore='Error: Stray end tag “div”.' --ignore='Error: Stray end tag “body”.'
+```
+
 To get full result from validator use --verbose
 
 ```sh
@@ -57,3 +63,6 @@ $ html-validator <url> --verbose
 ## Related
 
 - [html-validator](https://github.com/zrrrzzt/html-validator) API for this module
+
+## License
+[MIT](LICENSE)
