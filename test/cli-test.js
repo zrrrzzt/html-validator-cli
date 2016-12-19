@@ -126,3 +126,14 @@ tap.test('You can use another validator', function testError (test) {
     test.end()
   })
 })
+
+tap.test('It supports ignore', function testError (test) {
+  const str = 'Error: Stray end tag “div”.'
+  exec('./index.js', ['--file=test/data/invalid.html', `--ignore=${str}`], function versionWithV (error, stdout, stderr) {
+    if (error) {
+      throw error
+    }
+    test.equal(stdout.toString().trim(), 'Page is valid', 'Expected message to stdout')
+    test.end()
+  })
+})
