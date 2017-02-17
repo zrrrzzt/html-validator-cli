@@ -53,11 +53,12 @@ validator(options, (error, data) => {
     console.error(error)
     process.exitCode = 1
   } else {
+    var errors
     var msg
     var validationFailed = false
 
     if (options.format === 'json') {
-      const errors = data.messages.filter(isError)
+      errors = data.messages.filter(isError)
       msg = JSON.stringify(data, null, 2)
       if (errors.length > 0) {
         validationFailed = true
@@ -76,6 +77,11 @@ validator(options, (error, data) => {
     if (validationFailed) {
       if (!argv.verbose) {
         console.log('Page is not valid')
+        if (errors) {
+          errors.forEach(err => {
+            console.log(err)
+          })
+        }
       }
       process.exitCode = 1
     } else {
