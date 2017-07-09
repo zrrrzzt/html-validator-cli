@@ -118,7 +118,7 @@ tap.test('You can supply url by flag', function testError (test) {
 })
 
 tap.test('You can use another validator', function testError (test) {
-  exec('./index.js', ['--file=test/data/valid.html', '--validator=http://html5.validator.nu'], function versionWithV (error, stdout, stderr) {
+  exec('./index.js', ['--file=test/data/valid.html', '--validator=https://html5.validator.nu'], function versionWithV (error, stdout, stderr) {
     if (error) {
       throw error
     }
