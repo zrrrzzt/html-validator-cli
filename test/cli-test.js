@@ -107,6 +107,26 @@ tap.test('It returns data in supplied format for failures', function testError (
   })
 })
 
+tap.test('It returns no data for success if --quiet', function testSuccessQuiet (test) {
+  exec('./index.js', ['--file=test/data/valid.html', '--format=json', '--quiet'], function successQuiet (error, stdout, stderr) {
+    if (error) {
+      throw error
+    }
+    test.equal(stdout.toString().trim().length, 0)
+    test.end()
+  })
+})
+
+tap.test('It errors for failures if --quiet', function testErrorQuiet (test) {
+  exec('./index.js', ['--file=test/data/invalid.html', '--format=json', '--quiet'], function errorQuiet (error, stdout, stderr) {
+    if (error) {
+      console.error(error)
+    }
+    test.equal(JSON.parse(stdout.toString().trim()).messages.length, 1)
+    test.end()
+  })
+})
+
 tap.test('You can supply url by flag', function testError (test) {
   exec('./index.js', ['--url=https://www.google.com', '--verbose'], function versionWithV (error, stdout, stderr) {
     if (error) {

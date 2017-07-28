@@ -7,7 +7,7 @@ const getHelpText = require('./lib/getHelpText')
 const pkg = require('./package.json')
 const query = process.argv[2]
 const argv = require('minimist')((process.argv.slice(2)))
-var options = {
+let options = {
   format: 'text',
   ignore: argv.ignore
 }
@@ -53,8 +53,8 @@ validator(options, (error, data) => {
     console.error(error)
     process.exitCode = 1
   } else {
-    var msg
-    var validationFailed = false
+    let msg
+    let validationFailed = false
 
     if (options.format === 'json') {
       const errors = data.messages.filter(isError)
@@ -74,17 +74,20 @@ validator(options, (error, data) => {
       }
     }
     if (validationFailed) {
-      if (!argv.verbose) {
+      if (!argv.verbose && !argv.quiet) {
         console.log('Page is not valid')
+      }
+      if (argv.verbose || argv.quiet) {
+        console.log(msg)
       }
       process.exitCode = 1
     } else {
-      if (!argv.verbose) {
+      if (!argv.verbose && !argv.quiet) {
         console.log('Page is valid')
       }
-    }
-    if (argv.verbose) {
-      console.log(msg)
+      if (argv.verbose) {
+        console.log(msg)
+      }
     }
   }
 })

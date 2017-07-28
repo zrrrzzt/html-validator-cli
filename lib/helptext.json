@@ -11,5 +11,21 @@
   "Optional, specify format of returned data",
   "Valid options: json, html, xhtml, xml, gnu and text (default)",
   "",
-  "$ html-validator <url> --format=<format>"
+  "$ html-validator <url> --format=<format>",
+  "",
+  "Use another validator (requires the same api)",
+  "",
+  "$ html-validator <url> --validator='http://html5.validator.nu'",
+  "",
+  "Optional, pass in strings to ignore",
+  "",
+  "$ html-validator <url> --ignore='Error: Stray end tag “div”.' --ignore='Error: Stray end tag “body”.'",
+  "",
+  "Get full result from validator use --verbose",
+  "",
+  "$ html-validator <url> --verbose",
+  "",
+  "Optional, only get errors use --quiet",
+  "",
+  "$ html-validator <url> --quiet"
 ]
