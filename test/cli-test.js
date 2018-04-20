@@ -1,5 +1,3 @@
-'use strict'
-
 const tap = require('tap')
 const fs = require('fs')
 const exec = require('child_process').execFile
@@ -102,7 +100,7 @@ tap.test('It returns data in supplied format for failures', function testError (
     if (error) {
       console.error(error)
     }
-    test.equal(JSON.parse(stdout.toString().trim()).messages.length, 1)
+    test.equal(JSON.parse(stdout.toString().trim()).messages.length, 2)
     test.end()
   })
 })
@@ -122,7 +120,7 @@ tap.test('It errors for failures if --quiet', function testErrorQuiet (test) {
     if (error) {
       console.error(error)
     }
-    test.equal(JSON.parse(stdout.toString().trim()).messages.length, 1)
+    test.equal(JSON.parse(stdout.toString().trim()).length, 1)
     test.end()
   })
 })

@@ -68,6 +68,23 @@ Optional, only get errors use --quiet
 $ html-validator <url> --quiet
 ```
 
+returns array of error messages
+
+```JavaScript
+[
+  {
+    "type": "error",
+    "lastLine": 8,
+    "lastColumn": 32,
+    "firstColumn": 27,
+    "message": "Stray end tag “div”.",
+    "extract": "aaaad code</div></p>\n<",
+    "hiliteStart": 10,
+    "hiliteLength": 6
+  }
+]
+```
+
 ## Related
 
 - [html-validator](https://github.com/zrrrzzt/html-validator) API for this module

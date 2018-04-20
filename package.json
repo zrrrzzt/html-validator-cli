@@ -13,13 +13,14 @@
     "html-validator": "index.js"
   },
   "engines": {
-    "node": ">=4.8.4"
+    "node": ">=8.11.1"
   },
   "scripts": {
-    "setup": "npm install && node setup.js",
     "test": "standard && nsp check && tap --reporter=spec test/*.js",
     "coverage": "tap test/*.js --coverage",
-    "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls"
+    "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls",
+    "standard-fix": "standard --fix",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },
   "keywords": [
     "html-validator",
@@ -28,14 +29,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zrrrzzt/html-validator-cli.git"
+    "url": "git+https://github.com/zrrrzzt/html-validator-cli.git"
   },
   "bugs": {
     "url": "https://github.com/zrrrzzt/html-validator-cli/issues"
   },
-  "homepage": "https://github.com/zrrrzzt/html-validator-cli",
+  "homepage": "https://github.com/zrrrzzt/html-validator-cli#readme",
   "dependencies": {
-    "html-validator": "2.2.3",
+    "html-validator": "3.0.0",
     "minimist": "1.2.0"
   },
   "devDependencies": {

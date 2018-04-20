@@ -61,6 +61,9 @@ validator(options, (error, data) => {
       msg = JSON.stringify(data, null, 2)
       if (errors.length > 0) {
         validationFailed = true
+        if (argv.quiet) {
+          msg = JSON.stringify(errors, null, 2)
+        }
       }
     } else if (options.ignore) {
       msg = data
