@@ -13,7 +13,7 @@
     "html-validator": "index.js"
   },
   "engines": {
-    "node": ">=8.11.1"
+    "node": ">=8.11.2"
   },
   "scripts": {
     "test": "standard && nsp check && tap --reporter=spec test/*.js",
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/zrrrzzt/html-validator-cli#readme",
   "dependencies": {
-    "html-validator": "3.0.1",
+    "html-validator": "3.0.2",
     "minimist": "1.2.0"
   },
   "devDependencies": {
