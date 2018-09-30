@@ -40,6 +40,10 @@ if (argv.validator) {
   options.validator = argv.validator
 }
 
+if (argv.headers) {
+  options.headers = JSON.parse(argv.headers)
+}
+
 if (argv.file) {
   options.data = fs.readFileSync(argv.file)
 }
