@@ -55,6 +55,11 @@ Optional pass in strings to ignore
 ```
 $ html-validator <url> --ignore='Error: Stray end tag “div”.' --ignore='Error: Stray end tag “body”.'
 ```
+Optional pass in headers
+
+```
+$ html-validator <url> --headers='{"foo":"doo"}'
+```
 
 To get full result from validator use --verbose
 
