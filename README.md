@@ -97,5 +97,3 @@ returns array of error messages
 ## License
 
 [MIT](LICENSE)
-
-![Robohash image of html-validator-cli](https://robots.kebabstudios.party/html-validator-cli.png "Robohash image of html-validator-cli")
