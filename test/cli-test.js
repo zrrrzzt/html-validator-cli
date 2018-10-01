@@ -63,6 +63,16 @@ tap.test('It returns correct message on validation success', function testSucces
   })
 })
 
+tap.test('You can supply headers', function testSuccess (test) {
+  exec('./index.js', [`--file=test/data/valid.html`, `--headers=${JSON.stringify({ foo: 'bar' })}`], (error, stdout, stderr) => {
+    if (error) {
+      throw error
+    }
+    test.ok(stdout.toString().trim(), 'Data OK')
+    test.end()
+  })
+})
+
 tap.test('It returns data if file supplied', function testError (test) {
   exec('./index.js', ['--file=test/data/valid.html'], function versionWithV (error, stdout, stderr) {
     if (error) {
