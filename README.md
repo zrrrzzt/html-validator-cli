@@ -10,6 +10,8 @@ Sends ```Page is valid```to ```STDOUT``` and exits with code 0 if page is valid.
 
 Sends ```Page is not valid``` to ```STDOUT``` and exits with code 1 if page is not valid.
 
+Sends ```Page not found``` to ```STDOUT``` and exits with code 1 if page is not found.
+
 ## Installation
 
 ```

@@ -53,6 +53,14 @@ tap.test('It returns error on validation failure', function testError (test) {
   })
 })
 
+tap.test('It returns not found for non-existing pages', function testError (test) {
+  exec('./index.js', ['https://adsf'], function versionWithV (error, stdout, stderr) {
+    tap.equal(error.code, 1, 'It returns error.code 1')
+    test.equal(stdout.toString().trim(), 'Page not found', 'Expected message to stdout')
+    test.end()
+  })
+})
+
 tap.test('It returns correct message on validation success', function testSuccess (test) {
   exec('./index.js', ['--file=test/data/valid.html'], (error, stdout, stderr) => {
     if (error) {
