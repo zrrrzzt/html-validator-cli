@@ -1,63 +1,59 @@
 #!/usr/bin/env node
-'use strict'
+(async () => {
+  const fs = require('fs')
+  const validator = require('html-validator')
+  const getHelpText = require('./lib/getHelpText')
+  const pkg = require('./package.json')
+  const query = process.argv[2]
+  const argv = require('minimist')((process.argv.slice(2)))
+  let options = {
+    format: 'text',
+    ignore: argv.ignore
+  }
 
-const fs = require('fs')
-const validator = require('html-validator')
-const getHelpText = require('./lib/getHelpText')
-const pkg = require('./package.json')
-const query = process.argv[2]
-const argv = require('minimist')((process.argv.slice(2)))
-let options = {
-  format: 'text',
-  ignore: argv.ignore
-}
+  const isError = item => item.type === 'error'
+  const pageNotFound = item => item.type === 'non-document-error'
 
-const isError = item => item.type === 'error'
-const pageNotFound = item => item.type === 'non-document-error'
+  if (!query || process.argv.indexOf('-h') !== -1 || process.argv.indexOf('--help') !== -1) {
+    console.log(getHelpText())
+    process.exit(0)
+  }
 
-if (!query || process.argv.indexOf('-h') !== -1 || process.argv.indexOf('--help') !== -1) {
-  console.log(getHelpText())
-  process.exit(0)
-}
+  if (process.argv.indexOf('-v') !== -1 || process.argv.indexOf('--version') !== -1) {
+    console.log(pkg.version)
+    process.exit(0)
+  }
 
-if (process.argv.indexOf('-v') !== -1 || process.argv.indexOf('--version') !== -1) {
-  console.log(pkg.version)
-  process.exit(0)
-}
+  if (query.indexOf('http') !== -1) {
+    options.url = argv._[0]
+  }
 
-if (query.indexOf('http') !== -1) {
-  options.url = argv._[0]
-}
+  if (argv.format && !argv.ignore) {
+    options.format = argv.format
+  }
 
-if (argv.format && !argv.ignore) {
-  options.format = argv.format
-}
+  if (argv.url) {
+    options.url = argv.url
+  }
 
-if (argv.url) {
-  options.url = argv.url
-}
+  if (argv.validator) {
+    options.validator = argv.validator
+  }
 
-if (argv.validator) {
-  options.validator = argv.validator
-}
+  if (argv.headers) {
+    options.headers = JSON.parse(argv.headers)
+  }
 
-if (argv.headers) {
-  options.headers = JSON.parse(argv.headers)
-}
+  if (argv.file) {
+    options.data = fs.readFileSync(argv.file)
+  }
 
-if (argv.file) {
-  options.data = fs.readFileSync(argv.file)
-}
+  if (argv.data) {
+    options.data = argv.data
+  }
 
-if (argv.data) {
-  options.data = argv.data
-}
-
-validator(options, (error, data) => {
-  if (error) {
-    console.error(error)
-    process.exitCode = 1
-  } else {
+  try {
+    const data = await validator(options)
     let msg
     let validationFailed = false
     let documentNotFound = false
@@ -104,5 +100,8 @@ validator(options, (error, data) => {
         console.log(msg)
       }
     }
+  } catch (error) {
+    console.error(error)
+    process.exitCode = 1
   }
-})
+})()
