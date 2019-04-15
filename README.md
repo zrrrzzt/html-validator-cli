@@ -6,6 +6,8 @@
 
 CLI for validating html using [validator.w3.org/nu](http://validator.w3.org/nu/)
 
+Requires Node >= 8.15.3 for older versions use v5.0.0
+
 Sends ```Page is valid```to ```STDOUT``` and exits with code 0 if page is valid.
 
 Sends ```Page is not valid``` to ```STDOUT``` and exits with code 1 if page is not valid.
@@ -75,6 +77,12 @@ Optional, only get errors use --quiet
 $ html-validator <url> --quiet
 ```
 
+Validate a local document without setting up a tunnel
+
+```
+$ html-validator <local-url> --islocal
+```
+
 returns array of error messages
 
 ```JavaScript
@@ -94,6 +102,7 @@ returns array of error messages
 
 ## Related
 
+- [site-validator-cli](https://github.com/p1ho/site-validator-cli) CLI for validating a whole site or multiple pages
 - [html-validator](https://github.com/zrrrzzt/html-validator) API for this module
 
 ## License

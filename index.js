@@ -36,6 +36,10 @@
     options.url = argv.url
   }
 
+  if (argv.islocal) {
+    options.isLocal = true
+  }
+
   if (argv.validator) {
     options.validator = argv.validator
   }
