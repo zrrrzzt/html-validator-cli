@@ -144,7 +144,7 @@ tap.test('It errors for failures if --quiet', function testErrorQuiet (test) {
 })
 
 tap.test('You can supply url by flag', function testError (test) {
-  exec('./index.js', ['--url=https://www.google.com', '--verbose'], function versionWithV (error, stdout, stderr) {
+  exec('./index.js', ['--url=https://www.npm.com', '--verbose'], function versionWithV (error, stdout, stderr) {
     if (error) {
       console.error(error)
     }

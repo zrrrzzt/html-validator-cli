@@ -6,7 +6,7 @@
   const pkg = require('./package.json')
   const query = process.argv[2]
   const argv = require('minimist')((process.argv.slice(2)))
-  let options = {
+  const options = {
     format: 'text',
     ignore: argv.ignore
   }
