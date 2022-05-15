@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/zrrrzzt/html-validator-cli#readme",
   "dependencies": {
-    "html-validator": "5.0.1",
+    "html-validator": "6.0.1",
     "minimist": "1.2.5"
   },
   "devDependencies": {
